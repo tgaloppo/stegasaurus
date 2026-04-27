@@ -1,6 +1,6 @@
 # Stegasaurus
 
-Stegasaurus is a steganography tool for embedding an encrypted message payload into an image. It uses Syndrome-Trellis Codes and a local variance cost function to hide the message in areas with spectral high frequency. Additionally, a randomized Huffman encoding is applied to allow sentinel free embedding: Stegasaurus uses no fixed markers or header elements. Stegasaurus is written entirely in Julia.
+Stegasaurus is a steganography tool for embedding an encrypted message payload into an image. It uses Syndrome-Trellis Codes and a local variance cost function to hide the message in areas with complex texture. Additionally, a randomized Huffman encoding is applied to allow sentinel free embedding: Stegasaurus uses no fixed markers or header elements. Stegasaurus is written entirely in Julia.
 
 ## Technical Specifications
 
