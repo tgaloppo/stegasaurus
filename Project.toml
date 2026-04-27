@@ -1,0 +1,24 @@
+name = "stegasaurus"
+uuid = "82dab5a9-e623-4509-8b6f-fa3cc46fe3d3"
+version = "0.1.0"
+authors = ["Travis Galoppo <tgaloppo@gmail.com>"]
+
+[deps]
+ArgParse = "c7e460c6-2fb9-53a9-8c5b-16f535851c63"
+CRC = "44b605c4-b955-5f2b-9b6d-d2bd01d3d205"
+DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
+ImageIO = "82e4d734-157c-48bb-816b-45c225c6df19"
+Images = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
+Nettle = "49dea1ee-f6fa-5aa6-9a11-8816cee7d4b9"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+SHA = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+
+[compat]
+ArgParse = "1.2.0"
+CRC = "4.0.0"
+DataStructures = "0.19.4"
+ImageIO = "0.6.9"
+Images = "0.26.2"
+Nettle = "1.0.0"
+Random = "1.11.0"
+SHA = "0.7.0"
