@@ -35,7 +35,7 @@ The current implementation derives a salt value from the password itself; this m
 Stegasaurus was written using Julia 1.12.6. Clone the repository and instantiate the environment to download the required cryptographic and image processing dependencies.
 
 ```bash
-git clone [https://gitlab.com/tgaloppo/stegasaurus.git](https://gitlab.com/tgaloppo/stegasaurus.git)
+git clone https://gitlab.com/tgaloppo/stegasaurus.git
 cd stegasaurus
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
 ```
