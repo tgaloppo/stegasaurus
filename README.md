@@ -56,7 +56,7 @@ To embed the file "secret_recipe.txt" into the image "test.jpg" resulting in the
 julia --project=. src/stegasaurus.jl embed -f secret_recipe.txt test.jpg recipe.png
 ```
 
-*IMPORTANT*: You *MUST* use an output image format with *LOSSLESS* compression. Using a non-lossless compression will corrupt the embedding.
+**IMPORTANT**: You **MUST** use an output image format with **LOSSLESS** compression. Using a non-lossless compression will corrupt the embedding.
 
 ### Extraction
 
@@ -66,5 +66,5 @@ To extract the embedded payload from file "secret.png" into file "output.txt":
 julia --project=. src/stegasaurus.jl extract secret.png output.txt
 ```
 
-During *extraction only*, if no output file is specified, the output will be printed to stdout.
+During **extraction only**, if no output file is specified, the output will be printed to stdout.
 If no message is found, or if the password is incorrect, the tool will simply report no message found.
