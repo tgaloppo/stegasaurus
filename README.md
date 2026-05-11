@@ -9,7 +9,7 @@ Stegasaurus is a steganography tool for embedding an encrypted message payload i
 | ![Original](assets/moon-original.png) | ![Embedded](assets/moon-embedded.png) | ![Difference](assets/moon-difference.png) |
 | *Empty* | *Contains Speech* | *Difference* |
 
-The "embedded" image above contains the full text of JFK's 1962 speech at Rice University. The speech text is 12178 bytes and the image size is roughly 440 kbytes. The difference image highlights the pixels where information is hidden, clearly demonstrating the effect of the syndrome-trellis codes and inverse variance cost function. To recover the speech, run the extraction command:
+The "embedded" image above contains the full text of JFK's 1962 speech at Rice University. The speech text is 12178 bytes and the uncompressed image size is roughly 936 kbytes. The difference image highlights the pixels where information is hidden, clearly demonstrating the effect of the syndrome-trellis codes and inverse variance cost function. To recover the speech, run the extraction command:
 
 ```bash
 $ julia --project=. src/stegasaurus.jl extract assets/moon-embedded.png
