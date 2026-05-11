@@ -2,6 +2,20 @@
 
 Stegasaurus is a steganography tool for embedding an encrypted message payload into an image. It uses Syndrome-Trellis Codes and a local variance cost function to hide the message in areas with complex texture. Additionally, a randomized Huffman encoding is applied to allow signature free embedding: Stegasaurus uses no fixed markers or header elements. Stegasaurus is written entirely in Julia.
 
+## Example
+
+| Original | Embedded | Difference |
+| :---: | :---: | :---: |
+| ![Original](assets/seascape-original.png) | ![Embedded](assets/seascape-embedded.png) | ![Difference](assets/seascape-difference.png) |
+| *Empty* | *Contains Speech* | *Difference* |
+
+The "embedded" image above contains the full text to JFK's 1962 speech at Rice University. The speech text is 12178 bytes and the image size is roughly 320 kbytes. The difference image highlights the pixels where information is hidden, clearly demonstrating the effect of the syndrome-trellis codes and inverse variance cost function. To recover the speech, run the extraction command:
+
+```bash
+$ julia --project=. src/stegasaurus.jl extract assets/seascape-embedded.png
+Password: stegasaurus
+```
+
 ## Technical Specifications
 
 Stegasaurus is composed of the following algorithmic components:
@@ -26,6 +40,10 @@ AES-256-CBC encryption is applied to the payload prior to encoding.
 
 A randomized Huffman encoding is generated with 257 symbols. The 257th symbol is used as an end-of-message marker to recognize message complete during decoding. This allows the message to be embedded with no fixed place markers for length, starting position, or ending position. The randomization is achieved using a cryptographically secure PRNG (AES-256-CTR), and effectively creates a Caesar-cipher over the 257 symbol alphabet. Importantly, Huffman encoding is not being used for compression purposes; its sole purpose is to allow a signature free embedding.
 
+### LSB Matching
+
+Stegasaurus uses LSB-Matching ($\pm 1$), randomly incrementing or decrementing pixel values to match the required state. This avoids asymmetric pairing that is easy to detect with Histogram or Chi-Square analyis.
+
 ## Known Weakness
 
 The current implementation derives a salt value from the password itself; this means that the same Huffman encoding and permutation will be repeated if the same password is used multiple times. It is strongly suggested to use a unique password for each embedding. 
@@ -35,7 +53,7 @@ The current implementation derives a salt value from the password itself; this m
 Stegasaurus was written using Julia 1.12.6. Clone the repository and instantiate the environment to download the required cryptographic and image processing dependencies.
 
 ```bash
-git clone https://gitlab.com/tgaloppo/stegasaurus.git
+git clone https://github.com/tgaloppo/stegasaurus.git
 cd stegasaurus
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
 ```
