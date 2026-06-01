@@ -38,11 +38,11 @@ AES-256-CBC encryption is applied to the payload prior to encoding.
 
 ### Huffman Encoding / Signature Free Embedding
 
-A randomized Huffman encoding is generated with 257 symbols. The 257th symbol is used as an end-of-message marker to recognize message complete during decoding. This allows the message to be embedded with no fixed place markers for length, starting position, or ending position. The randomization is achieved using a cryptographically secure PRNG (AES-256-CTR), and effectively creates a Caesar-cipher over the 257 symbol alphabet. Importantly, Huffman encoding is not being used for compression purposes; its sole purpose is to allow a signature free embedding.
+A randomized Huffman encoding is generated with 257 symbols. The 257th symbol is used as an end-of-message marker to recognize message complete during decoding. This allows the message to be embedded with no fixed place markers for length, starting position, or ending position. The randomization is achieved using a cryptographically secure PRNG (AES-256-CTR). Importantly, Huffman encoding is not being used for compression purposes; its sole purpose is to allow a signature free embedding.
 
 ### LSB Matching
 
-Stegasaurus uses LSB-Matching ($\pm 1$), randomly incrementing or decrementing pixel values to match the required state. This avoids asymmetric pairing that is easy to detect with Histogram or Chi-Square analyis.
+Stegasaurus uses LSB-Matching ($\pm 1$), randomly incrementing or decrementing pixel values to match the required state. This avoids asymmetric pairing that is easy to detect with Histogram or Chi-Square analysis.
 
 ## Known Weakness
 
