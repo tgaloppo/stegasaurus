@@ -38,7 +38,7 @@ AES-256-CBC encryption is applied to the payload prior to encoding.
 
 ### Huffman Encoding / Signature Free Embedding
 
-A randomized Huffman encoding is generated with 257 symbols. The 257th symbol is used as an end-of-message marker to recognize message complete during decoding. This allows the message to be embedded with no fixed place markers for length, starting position, or ending position. The randomization is achieved using a cryptographically secure PRNG (AES-256-CTR). Importantly, Huffman encoding is not being used for compression purposes; its sole purpose is to allow a signature free embedding.
+A randomized Huffman encoding is generated with 257 symbols. The 257th symbol is used as an end-of-message marker to recognize message termination during decoding. This allows the message to be embedded with no fixed place markers for length, starting position, or ending position. The randomization is achieved using a cryptographically secure PRNG (AES-256-CTR). Importantly, Huffman encoding is not being used for compression purposes; its sole purpose is to allow a signature free embedding.
 
 ### LSB Matching
 
