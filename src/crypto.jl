@@ -71,3 +71,23 @@ function generate_shuffle(size::Int, key::Vector{UInt8}, iv::Vector{UInt8})::Vec
     
     return shuf
 end
+
+# shuffle entries of vector according to specified shuffle order
+function shuffle_forward!(buffer::AbstractVector, shuffle::Vector{UInt})
+    for j in eachindex(buffer)
+        k = shuffle[j]
+        tmp = buffer[j]
+        buffer[j] = buffer[k]
+        buffer[k] = tmp
+    end
+end
+
+# un-shuffle vector entries according to shuffle order
+function shuffle_backward!(buffer::AbstractVector, shuffle::Vector{UInt})
+    for j=length(buffer):-1:1
+        k = shuffle[j]
+        tmp = buffer[j]
+        buffer[j] = buffer[k]
+        buffer[k] = tmp
+    end
+end

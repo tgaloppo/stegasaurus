@@ -84,26 +84,6 @@ function save_image_raw(path::String, data::Vector{UInt8}, dims::Tuple{Int, Int}
     save(path, img)
 end
 
-# shuffle entries of vector according to specified shuffle order
-function shuffle_forward!(buffer::AbstractVector, shuffle::Vector{UInt})
-    for j in eachindex(buffer)
-        k = shuffle[j]
-        tmp = buffer[j]
-        buffer[j] = buffer[k]
-        buffer[k] = tmp
-    end
-end
-
-# un-shuffle vector entries according to shuffle order
-function shuffle_backward!(buffer::AbstractVector, shuffle::Vector{UInt})
-    for j=length(buffer):-1:1
-        k = shuffle[j]
-        tmp = buffer[j]
-        buffer[j] = buffer[k]
-        buffer[k] = tmp
-    end
-end
-
 # compute a cost matrix based on the local variance for each 
 # pixel in an image, defined as the variance of the 5x5 pixel 
 # block centered on the pixel of interest. Cost is the inverse

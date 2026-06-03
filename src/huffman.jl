@@ -28,10 +28,12 @@ Base.isless(a::HuffmanNode, b::HuffmanNode) = a.count == b.count ? a.position < 
 # goal is to provide a stream with a recognizable end marker (symbol 256);
 # the tree is randomized so that the marker is not static.
 function build_huffman_tree(key::Vector{UInt8}, iv::Vector{UInt8})
+    position = collect(1:257)
     shuf = generate_shuffle(257, key, iv)
+    shuffle_forward!(position, shuf)
     heap = MutableBinaryMinHeap{HuffmanNode}()
     for j = 0:256
-        push!(heap, HuffmanNode(j, 1, shuf[j+1], nothing, nothing))
+        push!(heap, HuffmanNode(j, 1, position[j+1], nothing, nothing))
     end
 
     while length(heap) > 1
